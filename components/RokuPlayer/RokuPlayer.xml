@@ -31,7 +31,7 @@
 
             <Rectangle id="secondSeparator" width="292" height="2" color="0xFFFFFFFF" translation="[0,480]" /> 
 
-            <Poster id="control" uri="pkg:/RokuPlayer/control.png" translation="[24,482]" width="244" height="240">
+            <Poster id="control" uri="pkg:/components/RokuPlayer/control.png" translation="[24,482]" width="244" height="240">
                 <Label text="Move cursor" width="130" horizAlign = "center" translation="[0,35]">
                     <Font role = "font" uri = "pkg:/components/RokuPlayer/SairaCondensed-Regular.ttf" size="24" />
                 </Label>

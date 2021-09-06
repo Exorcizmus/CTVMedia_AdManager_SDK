@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="FetchTask" extends="Task" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+	<script type="text/brightscript" uri="pkg:/components/RokuPlayer/FetchTask.brs" />
+	
+	<interface>
+    	<field id = "oururi" type = "string" />
+    	<field id = "settingsuri" type = "string" />
+    	<field id = "aduri" type = "string" />
+    	<field id = "res" type = "array"/>
+		<field id = "testuri" type = "string" />
+ 	</interface>
+</component>

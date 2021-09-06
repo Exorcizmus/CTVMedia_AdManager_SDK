@@ -50,7 +50,7 @@ end function
 
 function changeLogo()
     logoNum = Rnd(m.top.countGames)
-    m.slidePoster.uri="pkg:/images/GameLogos/" + str(logoNum).Trim() + ".png"
+    m.slidePoster.uri="pkg:/components/RokuPlayer/GameLogos/" + str(logoNum).Trim() + ".png"
 end function
 
 function startWork()

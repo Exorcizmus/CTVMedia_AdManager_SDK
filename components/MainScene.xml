@@ -8,5 +8,7 @@
 
     <children>
         <Label id="testLabel" width="1280" height="720" horizAlign="center" vertAlign="center" text="Hello World!" />
+
+        <Rokuplayer id='Rokuplayer' translation="[988,0]"/>
     </children>
 </component>
