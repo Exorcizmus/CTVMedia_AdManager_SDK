@@ -3,7 +3,6 @@ sub init()
 end sub
 
 function CallFunc()
-
     m.playerSettings = {}
     plainXMLSettings = fetch({ url: m.top.settingsuri }).xml()
     FetchSettings(plainXMLSettings, 0)
@@ -59,37 +58,36 @@ function FetchThem()
         m.themVast.Complete = []
 
         y = fetch({ url: m.ourVast.VASTAdTagURI }).xml()
-        print  " YYYYYYYYYYYYYYY ";y
         if y = invalid then return invalid
         FetchThemVast(y, 0)
         m.themVasts.push(m.themVast)
     end if
     ctr = 0
-    while m.themVasts[m.themVasts.Count() - 1].VASTAdTagURI.Count() <> 0
-        m.themNewVast = {}
-        m.themNewVast.VASTAdTagURI = []
-        m.themNewVast.Impression = []
-        m.themNewVast.start = []
-        m.themNewVast.FirstQuartile = []
-        m.themNewVast.Midpoint = []
-        m.themNewVast.ThirdQuartile = []
-        m.themNewVast.Complete = []
-        'z = fetch({ url: m.themVasts[m.themVasts.Count() - 1].VASTAdTagURI[0] }).xml()
-        z = fetch({ url: m.themVasts[m.themVasts.Count() - 1].VASTAdTagURI[0] })
-        
-        print  " ZZZZZZZZZZZZZZZZZZ ";z.text()
 
-        if z.status <> 200 or z.text() = "" or z.text().Trim() = ""
-            return 0
-        end if
-        'FetchThemNewVast(z, 0)
-        FetchThemNewVast(z.xml(), 0)
-        m.themVasts.push(m.themNewVast)
-        print "COUNT ";m.themVasts.Count()
-        ctr +=1
-    end while
+    if ctr <= m.top.recurDepth
+        while m.themVasts[m.themVasts.Count() - 1].VASTAdTagURI.Count() <> 0
+            m.themNewVast = {}
+            m.themNewVast.VASTAdTagURI = []
+            m.themNewVast.Impression = []
+            m.themNewVast.start = []
+            m.themNewVast.FirstQuartile = []
+            m.themNewVast.Midpoint = []
+            m.themNewVast.ThirdQuartile = []
+            m.themNewVast.Complete = []
+            z = fetch({ url: m.themVasts[m.themVasts.Count() - 1].VASTAdTagURI[0] })
+        
+            print  " ZZZZZZZZZZZZZZZZZZ ";z.text()
+
+            if z.status <> 200 or z.text() = "" or z.text().Trim() = ""
+                return 0
+            end if
+            FetchThemNewVast(z.xml(), 0)
+            m.themVasts.push(m.themNewVast)
+            ctr +=1
     
-    print ctr
+        end while
+    end if
+    'print ctr
 end function
 
 function MediaCheck(arrays) as boolean

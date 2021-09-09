@@ -102,6 +102,7 @@ function work()
     m.fetchTask.setField("oururi", address)
     m.fetchTask.setField("testuri", testAddress)
     m.fetchTask.setField("settingsuri", settingsAddress)
+    m.fetchTask.setField("recurDepth" , m.top.recurDepth)
     m.fetchTask.observeField("res", "PlayAd")
     m.fetchTask.control = "RUN"
 
@@ -293,11 +294,12 @@ function PlayAd()
         vstCnt = m.resultArr[1].Count()
        
         if Instr(1, m.resultArr[1][vstCnt-1].mediafile, "magic-tech.ru") <> 0
-            videoContent.url = m.resultArr[1][vstCnt-1].mediafile.Replace("https","http").Trim()
             m.sendTrackFlag = false
         else
             m.sendTrackFlag = true
         end if
+
+        videoContent.url = m.resultArr[1][vstCnt-1].mediafile.Trim()
 
 
         m.video.visible = true

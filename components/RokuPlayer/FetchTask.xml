@@ -9,5 +9,6 @@
     	<field id = "aduri" type = "string" />
     	<field id = "res" type = "array"/>
 		<field id = "testuri" type = "string" />
+		<field id="recurDepth" type="integer" />
  	</interface>
 </component>
