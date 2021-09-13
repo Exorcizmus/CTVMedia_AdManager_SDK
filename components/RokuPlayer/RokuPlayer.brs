@@ -1,3 +1,4 @@
+'roku51Games SDK Ad player 
 sub init()
     m.appName = m.top.appName
     m.appBundleId = m.top.appBundleId
