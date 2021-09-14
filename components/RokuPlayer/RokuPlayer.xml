@@ -32,22 +32,38 @@
 
             <Rectangle id="secondSeparator" width="292" height="2" color="0xFFFFFFFF" translation="[0,480]" /> 
 
+            <!-- Button description panel -->
             <Poster id="control" uri="pkg:/components/RokuPlayer/control.png" translation="[24,482]" width="244" height="240">
+                <!-- Button Back -->
+                <Label text="" width="130" horizAlign = "center" translation="[0,1]">
+                    <Font role = "font" uri = "pkg:/components/RokuPlayer/SairaCondensed-Regular.ttf" size="24" />
+                </Label>
+                <!-- Direction keys -->
                 <Label text="Move cursor" width="130" horizAlign = "center" translation="[0,35]">
                     <Font role = "font" uri = "pkg:/components/RokuPlayer/SairaCondensed-Regular.ttf" size="24" />
                 </Label>
-
+                <!-- Button OK -->
                 <Label text="Decision" width="130" horizAlign = "center" translation="[0,69]">
                     <Font role = "font" uri = "pkg:/components/RokuPlayer/SairaCondensed-Regular.ttf" size="24" />
                 </Label>
-
-                <Label text="Menu / Back to game" width="130" horizAlign = "center" translation="[0,103]">
+                <!-- Button Replay -->
+                <Label text="" width="130" horizAlign = "center" translation="[0,103]">
+                    <Font role = "font" uri = "pkg:/components/RokuPlayer/SairaCondensed-Regular.ttf" size="24" />
+                </Label>
+                <!-- Button Rewind -->
+                <Label text="" width="130" horizAlign = "center" translation="[0,135]">
+                    <Font role = "font" uri = "pkg:/components/RokuPlayer/SairaCondensed-Regular.ttf" size="24" />
+                </Label>
+                <!-- Button Play/Pause -->
+                <Label text="" width="130" horizAlign = "center" translation="[0,167]">
+                    <Font role = "font" uri = "pkg:/components/RokuPlayer/SairaCondensed-Regular.ttf" size="24" />
+                </Label>
+                <!-- Button Fastforward -->
+                <Label text="" width="130" horizAlign = "center" translation="[0,196]">
                     <Font role = "font" uri = "pkg:/components/RokuPlayer/SairaCondensed-Regular.ttf" size="24" />
                 </Label>
 
-                <Label text="Mute/Unmute video" width="130" horizAlign = "center" translation="[0,135]">
-                    <Font role = "font" uri = "pkg:/components/RokuPlayer/SairaCondensed-Regular.ttf" size="24" />
-                </Label>
+
 
             </Poster>
 
