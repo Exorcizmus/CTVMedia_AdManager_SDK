@@ -12,7 +12,7 @@
         <field id="countGames" type="integer" /> <!-- Because we can't create a roFileSystem object in the component,
                                                     we have to set the number of game logos from the outside -->
         <field id="recurDepth" type="integer" /> <!-- Recursion depth of "vast" files -->
-        <field id="muteAdVideo" type="boolean" /> <!-- Roku does not support more than one sound source at a time.
+        <field id="muteAdVideo" type="boolean" value="false"/> <!-- Roku does not support more than one sound source at a time.
                                                                         Set to true if you want ads to be shown without sound. -->
     </interface>
 	

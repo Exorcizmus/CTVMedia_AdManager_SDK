@@ -130,7 +130,7 @@ end function
 function VideoTimeChanged()
     'print "time ";m.video.position
     'print m.global.muteAdVideo
-    m.video.mute = m.global.muteAdVideo
+    m.video.mute =  m.top.muteAdVideo
         if m.video.position > m.video.duration * 0.25 and m.firstquartileFlag = false
             SendTracks("firstquartile")
             m.firstquartileFlag = true
