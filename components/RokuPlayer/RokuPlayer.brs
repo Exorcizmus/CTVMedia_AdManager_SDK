@@ -29,7 +29,6 @@ function GetDeviceDataAndSettings()
         m.displaySize = m.di.GetDisplaySize()
         m.devId = m.di.GetChannelClientId()
         m.model = m.di.GetModel()
-        m.channelName = m.top.channelName
     end if
 end function
 
@@ -39,9 +38,9 @@ function SendInventory()
         inventoryLink = inventoryLink.Replace("[IP_ADDRESS]", m.ip)
         inventoryLink = inventoryLink.Replace("[WIDTH]", str(m.displaySize.w))
         inventoryLink = inventoryLink.Replace("[HEIGHT]", str(m.displaySize.h))
-        inventoryLink = inventoryLink.Replace("[APP_NAME]", m.appName)
-        inventoryLink = inventoryLink.Replace("[APP_BUNDLE_ID]", m.appBundleId)
-        inventoryLink = inventoryLink.Replace("[CHANNEL_NAME]", m.channelName)
+        inventoryLink = inventoryLink.Replace("[APP_NAME]", m.top.appName)
+        inventoryLink = inventoryLink.Replace("[APP_BUNDLE_ID]", m.top.appBundleId)
+        inventoryLink = inventoryLink.Replace("[CHANNEL_NAME]", m.top.channelName)
         inventoryLink = inventoryLink.Replace(" ", "")
 
         SendData(inventoryLink)
@@ -76,17 +75,17 @@ function work()
     address = address.Replace("[IP_ADDRESS]",m.ip)
     address = address.Replace("[WIDTH]", str(m.displaySize.w))
     address = address.Replace("[HEIGHT]", str(m.displaySize.h))
-    address = address.Replace("[APP_NAME]", m.appName)
-    address = address.Replace("[APP_BUNDLE_ID]", m.appBundleId)
+    address = address.Replace("[APP_NAME]", m.top.appName)
+    address = address.Replace("[APP_BUNDLE_ID]", m.top.appBundleId)
     '
     address = address.Replace("[DEVICE_MODEL]", m.model)
     address = address.Replace("[DEVICE_ID]", m.devId)
 
     testAddress = address
-    address = address.Replace("[CHANNEL_NAME]", m.channelName)
+    address = address.Replace("[CHANNEL_NAME]", m.top.channelName)
     testAddress = testAddress.Replace("[CHANNEL_NAME]", testChannelName)
     
-    settingsAddress = settingsAddress.Replace("[CHANNEL_NAME]", m.channelName)
+    settingsAddress = settingsAddress.Replace("[CHANNEL_NAME]", m.top.channelName)
     
     address = address.Replace(" ", "")
     address = address + "&appURL=[APP_URL]"
@@ -129,8 +128,7 @@ end function
 
 function VideoTimeChanged()
     'print "time ";m.video.position
-    'print m.global.muteAdVideo
-    m.video.mute =  m.top.muteAdVideo
+    m.video.mute = m.top.muteAdVideo
         if m.video.position > m.video.duration * 0.25 and m.firstquartileFlag = false
             SendTracks("firstquartile")
             m.firstquartileFlag = true

@@ -25,14 +25,14 @@ function CallFunc()
             FetchTestChannel()
         end if
     else
-        FetchTestChannel()
+        FetchDirectVideo()
     end if
     
 end function
 
 function FetchTestChannel()
     testUri = m.top.testuri.Replace("[APP_URL]", m.playerSettings.appStoreURL.EncodeUri()).Trim()
-    print "testUri ";testUri
+    print "testUri loading";testUri
         
     x = fetch({ url: testUri }).xml()
     NewOurVast(x, 0)
@@ -43,6 +43,14 @@ function FetchTestChannel()
     res = [m.ourVast, arr, m.playerSettings]
     m.top.res = res
 
+end function
+
+function FetchDirectVideo()
+    arr = []
+    arr.push(m.ourVast)
+
+    res = [m.ourVast, arr, m.playerSettings]
+    m.top.res = res
 end function
 
 function FetchThem()
