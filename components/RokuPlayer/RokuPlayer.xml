@@ -14,6 +14,7 @@
         <field id="recurDepth" type="integer" /> <!-- Recursion depth of "vast" files -->
         <field id="muteAdVideo" type="boolean" value="false"/> <!-- Roku does not support more than one sound source at a time.
                                                                         Set to true if you want ads to be shown without sound. -->
+        <field id="debug" type="boolean" value="false"/> <!--If you need a debug info set this to true -->                                                                   
     </interface>
 	
 	<children>

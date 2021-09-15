@@ -2,13 +2,19 @@ sub init()
     m.top.functionName = "CallFunc"
 end sub
 
+sub PrintDebug(message)
+    if m.top.debug = true
+        print message
+    end if
+end sub
+
 function CallFunc()
     m.playerSettings = {}
     plainXMLSettings = fetch({ url: m.top.settingsuri }).xml()
     FetchSettings(plainXMLSettings, 0)
     
     ourUri = m.top.oururi.Replace("[APP_URL]", m.playerSettings.appStoreURL.EncodeUri()).Trim()
-    print "XXX ";ourUri
+    PrintDebug("URI " + ourUri)
 
     x = fetch({ url: ourUri }).xml()
     
@@ -17,7 +23,6 @@ function CallFunc()
     NewOurVast(x, 0)
     if m.ourVast.MediaFile = invalid
         FetchThem()
-        print "RES ";m.themVasts
         if MediaCheck(m.themVasts)
             res = [m.ourVast, m.themVasts, m.playerSettings]
             m.top.res = res
@@ -32,7 +37,7 @@ end function
 
 function FetchTestChannel()
     testUri = m.top.testuri.Replace("[APP_URL]", m.playerSettings.appStoreURL.EncodeUri()).Trim()
-    print "testUri loading";testUri
+    PrintDebug("testUri loading" + testUri)
         
     x = fetch({ url: testUri }).xml()
     NewOurVast(x, 0)
@@ -84,7 +89,7 @@ function FetchThem()
             m.themNewVast.Complete = []
             z = fetch({ url: m.themVasts[m.themVasts.Count() - 1].VASTAdTagURI[0] })
         
-            print  " ZZZZZZZZZZZZZZZZZZ ";z.text()
+            PrintDebug("next Vast " + z.text())
 
             if z.status <> 200 or z.text() = "" or z.text().Trim() = ""
                 return 0
@@ -137,7 +142,7 @@ function FetchThemVast(element as object, depth as integer)
         m.themVast.Error = element.GetText()
     end if
     if element.GetName() = "MediaFile"
-        print " MEDIAFILE "; element.GetText()
+        PrintDebug(" MEDIAFILE " + element.GetText())
         m.themVast.MediaFile = element.GetText()
     end if
     if element.GetName() = "Tracking"
@@ -188,7 +193,7 @@ function FetchThemNewVast(element as object, depth as integer)
         m.themNewVast.Error = element.GetText()
     end if
     if element.GetName() = "MediaFile"
-        print " MEDIAFILE "; element.GetText()
+        PrintDebug(" MEDIAFILE " + element.GetText())
         m.themNewVast.MediaFile = element.GetText()
     end if
     if element.GetName() = "Tracking"
@@ -231,13 +236,13 @@ function NewOurVast(element as object, depth as integer)
     'vast = {}
     if element.GetName() = "VASTAdTagURI"
         m.ourVast.VASTAdTagURI = element.GetText()
-        print " AdTagURI ";element.GetText();
+        PrintDebug(" AdTagURI " + element.GetText())
     end if
     if element.GetName() = "Impression"
         m.ourVast.Impression = element.GetText()
     end if
     if element.GetName() = "MediaFile"
-        print " MEDIAFILE "; element.GetText()
+        PrintDebug(" MEDIAFILE " + element.GetText())
         m.ourVast.MediaFile = element.GetText()
     end if
     if element.GetName() = "Error"
@@ -316,8 +321,8 @@ function fetch(options)
         if (type(msg) = "roUrlEvent")
             status = msg.GetResponseCode()
             if status <> 200
-                print "STATUS ";status
-                print msg.GetFailureReason()
+                PrintDebug("STATUS " + status)
+                PrintDebug(msg.GetFailureReason())
                 'stop
             end if
             headersArray = msg.GetResponseHeadersArray()
