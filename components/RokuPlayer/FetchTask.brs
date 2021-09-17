@@ -9,6 +9,7 @@ sub PrintDebug(message)
 end sub
 
 function CallFunc()
+    try
     m.playerSettings = {}
     plainXMLSettings = fetch({ url: m.top.settingsuri }).xml()
     FetchSettings(plainXMLSettings, 0)
@@ -32,7 +33,9 @@ function CallFunc()
     else
         FetchDirectVideo()
     end if
-    
+    catch e
+        PRINT "It went wrong:",e.message
+    end try
 end function
 
 function FetchTestChannel()

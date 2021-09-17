@@ -3,8 +3,12 @@ sub init()
 end sub
 
 function SendData()
+    try
     x = fetch({url: m.top.dataUri})
     m.top.res = 1
+    catch e
+        PRINT "It went wrong:",e.message
+    end try
 end function
 
 function fetch(options)
