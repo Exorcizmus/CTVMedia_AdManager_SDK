@@ -14,7 +14,16 @@
         <field id="recurDepth" type="integer" /> <!-- Recursion depth of "vast" files -->
         <field id="muteAdVideo" type="boolean" value="true"/> <!-- Roku does not support more than one sound source at a time.
                                                                         Set to false if you want ads to be shown with sound. -->
-        <field id="debug" type="boolean" value="false"/> <!--If you need a debug info set this to true -->                                                                   
+        <field id="debug" type="boolean" value="false"/> <!--If you need a debug info set this to true -->   
+
+        <!-- Control Buttons Section -->     
+        <field id="AdBackButton" type="string" />
+        <field id="AdDirectionButton" type="string" />
+        <field id="AdOKButton" type="string" />
+        <field id="AdReplayButton" type="string" />
+        <field id="AdRewindButton" type="string" />
+        <field id="AdPlayButton" type="string" />
+        <field id="AdFastforwardButton" type="string" />
     </interface>
 	
 	<children>
@@ -36,31 +45,31 @@
             <!-- Button description panel -->
             <Poster id="control" uri="pkg:/components/RokuPlayer/control.png" translation="[24,482]" width="244" height="240">
                 <!-- Button Back -->
-                <Label text="" width="130" horizAlign = "center" translation="[0,1]">
+                <Label id="AdBackButton" text="" width="130" horizAlign = "center" translation="[0,1]">
                     <Font role = "font" uri = "pkg:/components/RokuPlayer/SairaCondensed-Regular.ttf" size="24" />
                 </Label>
                 <!-- Direction keys -->
-                <Label text="Move cursor" width="130" horizAlign = "center" translation="[0,35]">
+                <Label id="AdDirectionButton" text="Move cursor" width="130" horizAlign = "center" translation="[0,35]">
                     <Font role = "font" uri = "pkg:/components/RokuPlayer/SairaCondensed-Regular.ttf" size="24" />
                 </Label>
                 <!-- Button OK -->
-                <Label text="Decision" width="130" horizAlign = "center" translation="[0,69]">
+                <Label id="AdOKButton"  text="Decision" width="130" horizAlign = "center" translation="[0,69]">
                     <Font role = "font" uri = "pkg:/components/RokuPlayer/SairaCondensed-Regular.ttf" size="24" />
                 </Label>
                 <!-- Button Replay -->
-                <Label text="" width="130" horizAlign = "center" translation="[0,103]">
+                <Label id="AdReplayButton" text="" width="130" horizAlign = "center" translation="[0,103]">
                     <Font role = "font" uri = "pkg:/components/RokuPlayer/SairaCondensed-Regular.ttf" size="24" />
                 </Label>
                 <!-- Button Rewind -->
-                <Label text="" width="130" horizAlign = "center" translation="[0,135]">
+                <Label id="AdRewindButton" text="" width="130" horizAlign = "center" translation="[0,135]">
                     <Font role = "font" uri = "pkg:/components/RokuPlayer/SairaCondensed-Regular.ttf" size="24" />
                 </Label>
                 <!-- Button Play/Pause -->
-                <Label text="" width="130" horizAlign = "center" translation="[0,167]">
+                <Label id="AdPlayButton" text="" width="130" horizAlign = "center" translation="[0,167]">
                     <Font role = "font" uri = "pkg:/components/RokuPlayer/SairaCondensed-Regular.ttf" size="24" />
                 </Label>
                 <!-- Button Fastforward -->
-                <Label text="" width="130" horizAlign = "center" translation="[0,196]">
+                <Label id="AdFastforwardButton" text="" width="130" horizAlign = "center" translation="[0,196]">
                     <Font role = "font" uri = "pkg:/components/RokuPlayer/SairaCondensed-Regular.ttf" size="24" />
                 </Label>
 

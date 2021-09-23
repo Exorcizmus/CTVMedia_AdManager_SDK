@@ -14,6 +14,15 @@ sub init()
     m.rokuPlayer.appName = "Test"
     m.rokuPlayer.appBundleId = "com.company.test"
     m.rokuPlayer.countGames = 3
+    'Control buttons setting section
+    m.rokuPlayer.AdBackButton = "Back"
+    m.rokuPlayer.AdDirectionButton = "Direction"
+    m.rokuPlayer.AdOKButton = "OK"
+    m.rokuPlayer.AdReplayButton = "Replay"
+    m.rokuPlayer.AdRewindButton = "Rewind"
+    m.rokuPlayer.AdPlayButton = "Play/Pause"
+    m.rokuPlayer.AdFastforwardButton = "Fastforward"
+
     m.rokuPlayer.callFunc("startWork")
 End sub
 

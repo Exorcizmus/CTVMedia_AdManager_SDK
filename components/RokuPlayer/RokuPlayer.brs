@@ -22,6 +22,23 @@ sub init()
     m.sendTrackFlag = true
 end sub
 
+sub setControlButtons()
+    AdBackButton = m.top.findNode("AdBackButton")
+    AdBackButton.text = m.top.AdBackButton
+    AdDirectionButton = m.top.findNode("AdDirectionButton")
+    AdDirectionButton.text = m.top.AdDirectionButton
+    AdOKButton = m.top.findNode("AdOKButton")
+    AdOKButton.text = m.top.AdOKButton
+    AdReplayButton = m.top.findNode("AdReplayButton")
+    AdReplayButton.text = m.top.AdReplayButton
+    AdRewindButton = m.top.findNode("AdRewindButton")
+    AdRewindButton.text = m.top.AdRewindButton
+    AdPlayButton = m.top.findNode("AdPlayButton")
+    AdPlayButton.text = m.top.AdPlayButton
+    AdFastforwardButton = m.top.findNode("AdFastforwardButton")
+    AdFastforwardButton.text = m.top.AdFastforwardButton
+end sub
+
 function GetDeviceDataAndSettings()
     if m.firstRun = true
         m.di = GetDeviceInfo()
@@ -60,6 +77,7 @@ sub PrintDebug(message)
 end sub
 
 function startWork()
+    setControlButtons()
     m.timer.control = "start"
     PrintDebug("timer started")
 end function
