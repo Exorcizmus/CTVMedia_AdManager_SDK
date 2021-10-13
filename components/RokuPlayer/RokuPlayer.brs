@@ -51,13 +51,14 @@ end function
 
 function SendInventory()
     if m.firstRun = true
-        inventoryLink = "https://vast.ctv.media/inventory?channel=[CHANNEL_NAME]&publisher=2ebb4ec4&ip=[IP_ADDRESS]&width=[WIDTH]&height=[HEIGHT]&appName=[APP_NAME]&appBundle=[APP_BUNDLE_ID]"
+        inventoryLink = "https://vast.ctv.media/inventory?channel=[CHANNEL_NAME]&publisher=[PUBLISHER]&ip=[IP_ADDRESS]&width=[WIDTH]&height=[HEIGHT]&appName=[APP_NAME]&appBundle=[APP_BUNDLE_ID]"
         inventoryLink = inventoryLink.Replace("[IP_ADDRESS]", m.ip)
         inventoryLink = inventoryLink.Replace("[WIDTH]", str(m.displaySize.w))
         inventoryLink = inventoryLink.Replace("[HEIGHT]", str(m.displaySize.h))
         inventoryLink = inventoryLink.Replace("[APP_NAME]", m.top.appName)
         inventoryLink = inventoryLink.Replace("[APP_BUNDLE_ID]", m.top.appBundleId)
         inventoryLink = inventoryLink.Replace("[CHANNEL_NAME]", m.top.channelName)
+        inventoryLink = inventoryLink.Replace("[PUBLISHER]", m.top.publisher)
         inventoryLink = inventoryLink.Replace(" ", "")
 
         SendData(inventoryLink)
@@ -94,13 +95,14 @@ function work()
 
     settingsAddress = "https://vast.ctv.media/player?channel=[CHANNEL_NAME]"
 
-    address = "https://vast.ctv.media/?channel=[CHANNEL_NAME]&width=[WIDTH]&height=[HEIGHT]&uip=[IP_ADDRESS]&appName=[APP_NAME]&appBundle=[APP_BUNDLE_ID]&device_model=[DEVICE_MODEL]&deviceId=[DEVICE_ID]&publisher=2ebb4ec4"
+    address = "https://vast.ctv.media/?channel=[CHANNEL_NAME]&width=[WIDTH]&height=[HEIGHT]&uip=[IP_ADDRESS]&appName=[APP_NAME]&appBundle=[APP_BUNDLE_ID]&device_model=[DEVICE_MODEL]&deviceId=[DEVICE_ID]&publisher=[PUBLISHER]"
 
     address = address.Replace("[IP_ADDRESS]", m.ip)
     address = address.Replace("[WIDTH]", str(m.displaySize.w))
     address = address.Replace("[HEIGHT]", str(m.displaySize.h))
     address = address.Replace("[APP_NAME]", m.top.appName)
     address = address.Replace("[APP_BUNDLE_ID]", m.top.appBundleId)
+    address = address.Replace("[PUBLISHER]", m.top.publisher)
     '
     address = address.Replace("[DEVICE_MODEL]", m.model)
     address = address.Replace("[DEVICE_ID]", m.devId)
@@ -133,6 +135,10 @@ function work()
 
     m.firstRun = false
 end function
+
+sub SetBGMNode()
+    m.bgm = m.top.bgmNode
+end sub
 
 function GetDeviceInfo() as object
     di = CreateObject("roDeviceInfo")
@@ -284,13 +290,13 @@ function VideoStateChanged()
         m.video.visible = false 'show the game
         m.videoAdError = true 'flag for finished state
         SendTracks("error") 'sending tracks
-        'StartControl()
+        if m.bgm <> invalid then m.bgm.control = "play"
     end if
     if m.video.state = "finished" and m.videoAdError = false 'if truly finish ad
         m.video.visible = false 'show the game
         SendTracks("complete") 'sending tracks
         m.timer.control = "start"
-
+        if m.bgm <> invalid then m.bgm.control = "play"
     else if m.video.state = "playing"
         SendTracks("impression")
         SendTracks("start")
@@ -311,6 +317,8 @@ function PlayAd()
     m.resultArr = m.fetchTask.res
 
     if MediaCheck(m.resultArr[1]) = true
+        if m.bgm <> invalid then m.bgm.control = "stop"
+
         m.timer.control = "stop"
 
         videoContent = createObject("RoSGNode", "ContentNode")

@@ -9,11 +9,14 @@
         <field id="channelName" type="string" /> <!-- Id of the channel obtained in our system -->
         <field id="appName" type="string" /> <!-- Name of channel or game -->
         <field id="appBundleId" type="string" /> <!-- For example: "com.companyname.gamename" -->
+        <field id="publisher" type="string" /> <!-- Publisher of channel or game -->        
         <field id="countGames" type="integer" /> <!-- Because we can't create a roFileSystem object in the component,
                                                     we have to set the number of game logos from the outside -->
         <field id="recurDepth" type="integer" /> <!-- Recursion depth of "vast" files -->
-        <field id="muteAdVideo" type="boolean" value="true"/> <!-- Roku does not support more than one sound source at a time.
-                                                                        Set to false if you want ads to be shown with sound. -->
+
+        <field id="bgmNode" type="node" onChange="SetBGMNode" /> <!--  Roku does not support more than one sound source at a time.-->
+        <field id="muteAdVideo" type="boolean" value="true"/>  <!-- Set to false if you want ads to be shown with sound. -->
+                                                                        
         <field id="debug" type="boolean" value="false"/> <!--If you need a debug info set this to true -->   
 
         <!-- Control Buttons Section -->     

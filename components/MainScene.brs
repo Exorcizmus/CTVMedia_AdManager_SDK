@@ -13,7 +13,10 @@ sub init()
     m.rokuPlayer.channelName = "eabace85" 'THIS IS A Test channel. Please change this with your channel.
     m.rokuPlayer.appName = "Test"
     m.rokuPlayer.appBundleId = "com.company.test"
+    m.rokuPlayer.publisher = "2ebb4ec4" 'THIS IS A Test publisher. Please change this with your publisher.
     m.rokuPlayer.countGames = 3
+    'm.rokuPlayer.bgmNode = m.audioBackground 'To automatically turn on and off the game's background music. You can assign to this variable 
+    
     'Control buttons setting section
     m.rokuPlayer.AdBackButton = "Back"
     m.rokuPlayer.AdDirectionButton = "Direction"
