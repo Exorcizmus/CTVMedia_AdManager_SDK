@@ -42,6 +42,7 @@ function CallFunc()
         for i = 0 to e.backtrace.Count() - 1
             print e.backtrace[i]
         end for
+        m.top.timer.control = "start"
     end try
 end function
 
