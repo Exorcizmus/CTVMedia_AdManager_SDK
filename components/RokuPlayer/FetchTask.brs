@@ -10,38 +10,45 @@ end sub
 
 function CallFunc()
     try
-    m.playerSettings = {}
-    plainXMLSettings = fetch({ url: m.top.settingsuri }).xml()
-    FetchSettings(plainXMLSettings, 0)
-    
-    ourUri = m.top.oururi.Replace("[APP_URL]", m.playerSettings.appStoreURL.EncodeUri()).Trim()
-    PrintDebug("URI " + ourUri)
+        m.top.timer.control = "stop"
+        m.playerSettings = {}
+        plainXMLSettings = fetch({ url: m.top.settingsuri }).xml()
+        FetchSettings(plainXMLSettings, 0)
 
-    x = fetch({ url: ourUri }).xml()
-    
-    m.ourVast = {}
+        ourUri = m.top.oururi.Replace("[APP_URL]", m.playerSettings.appStoreURL.EncodeUri()).Trim()
+        PrintDebug("URI " + ourUri)
 
-    NewOurVast(x, 0)
-    if m.ourVast.MediaFile = invalid
-        FetchThem()
-        if MediaCheck(m.themVasts)
-            res = [m.ourVast, m.themVasts, m.playerSettings]
-            m.top.res = res
+        x = fetch({ url: ourUri }).xml()
+
+        m.ourVast = {}
+
+        NewOurVast(x, 0)
+        if m.ourVast.MediaFile = invalid
+            FetchThem()
+            if MediaCheck(m.themVasts)
+                res = [m.ourVast, m.themVasts, m.playerSettings]
+                m.top.res = res
+            else
+                FetchTestChannel()
+            end if
         else
-            FetchTestChannel()
+            FetchDirectVideo()
         end if
-    else
-        FetchDirectVideo()
-    end if
     catch e
-        PRINT "It went wrong:",e.message
+        print "It throw exception!"
+        print "Number of error ";e.number
+        print "Error message text:", e.message
+        print "location of the error "
+        for i = 0 to e.backtrace.Count() - 1
+            print e.backtrace[i]
+        end for
     end try
 end function
 
 function FetchTestChannel()
     testUri = m.top.testuri.Replace("[APP_URL]", m.playerSettings.appStoreURL.EncodeUri()).Trim()
     PrintDebug("testUri loading" + testUri)
-        
+
     x = fetch({ url: testUri }).xml()
     NewOurVast(x, 0)
 
@@ -91,7 +98,7 @@ function FetchThem()
             m.themNewVast.ThirdQuartile = []
             m.themNewVast.Complete = []
             z = fetch({ url: m.themVasts[m.themVasts.Count() - 1].VASTAdTagURI[0] })
-        
+
             PrintDebug("next Vast " + z.text())
 
             if z.status <> 200 or z.text() = "" or z.text().Trim() = ""
@@ -99,8 +106,8 @@ function FetchThem()
             end if
             FetchThemNewVast(z.xml(), 0)
             m.themVasts.push(m.themNewVast)
-            ctr +=1
-    
+            ctr += 1
+
         end while
     end if
     'print ctr
@@ -129,7 +136,7 @@ function FetchSettings(elements as object, depth as integer)
         else if elem.GetName() = "app_store_url"
             m.playerSettings.appStoreURL = elem.GetText()
         end if
-        
+
     end for
 end function
 
@@ -308,7 +315,7 @@ function fetch(options)
     if options.method <> invalid
         request.setRequest(options.method)
     end if
-    request.SetUrl(options.url.Replace("https","http"))
+    request.SetUrl(options.url.Replace("https", "http"))
 
     requestSent = invalid
     if options.body <> invalid

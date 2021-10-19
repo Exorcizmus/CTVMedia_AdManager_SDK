@@ -11,5 +11,6 @@
 		<field id = "testuri" type = "string" />
 		<field id="recurDepth" type="integer" />
 		<field id="debug" type="boolean"/>
+		<field id="timer" type="node" />
  	</interface>
 </component>

@@ -130,6 +130,7 @@ function work()
     m.fetchTask.setField("settingsuri", settingsAddress)
     m.fetchTask.setField("recurDepth", m.top.recurDepth)
     m.fetchTask.setField("debug", m.top.debug)
+    m.fetchTask.setField("timer", m.timer)
     m.fetchTask.observeField("res", "PlayAd")
     m.fetchTask.control = "RUN"
 
@@ -291,6 +292,7 @@ function VideoStateChanged()
         m.videoAdError = true 'flag for finished state
         SendTracks("error") 'sending tracks
         if m.bgm <> invalid then m.bgm.control = "play"
+        m.timer.control = "start"
     end if
     if m.video.state = "finished" and m.videoAdError = false 'if truly finish ad
         m.video.visible = false 'show the game
@@ -318,8 +320,6 @@ function PlayAd()
 
     if MediaCheck(m.resultArr[1]) = true
         if m.bgm <> invalid then m.bgm.control = "stop"
-
-        m.timer.control = "stop"
 
         videoContent = createObject("RoSGNode", "ContentNode")
         vstCnt = m.resultArr[1].Count()
