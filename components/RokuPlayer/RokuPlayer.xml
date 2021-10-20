@@ -15,7 +15,7 @@
         <field id="recurDepth" type="integer" /> <!-- Recursion depth of "vast" files -->
 
         <field id="bgmNode" type="node" onChange="SetBGMNode" /> <!--  Roku does not support more than one sound source at a time.-->
-        <field id="muteAdVideo" type="boolean" value="true"/>  <!-- Set to false if you want ads to be shown with sound. -->
+        <field id="muteAdVideo" type="boolean" value="false"/>  <!-- Set to false if you want ads to be shown with sound. -->
                                                                         
         <field id="debug" type="boolean" value="false"/> <!--If you need a debug info set this to true -->   
 
