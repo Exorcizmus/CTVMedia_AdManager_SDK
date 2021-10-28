@@ -10,9 +10,9 @@ sub init()
 
     'Example of starting Ad player
     m.rokuPlayer = m.top.findNode("Rokuplayer")
-    m.rokuPlayer.channelName = "cc2f9765" 'THIS IS A Test channel. Please change this with your channel.
-    m.rokuPlayer.appName = "Dots_and_boxes"
-    m.rokuPlayer.appBundleId = "com.roku51games.dotsandboxes"
+    m.rokuPlayer.channelName = "eabace85" 'THIS IS A Test channel. Please change this with your channel.
+    m.rokuPlayer.appName = "Test"
+    m.rokuPlayer.appBundleId = "com.company.test"
     m.rokuPlayer.publisher = "2ebb4ec4" 'THIS IS A Test publisher. Please change this with your publisher.
     m.rokuPlayer.countGames = 3
     m.rokuPlayer.debug = true
