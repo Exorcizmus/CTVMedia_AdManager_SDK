@@ -144,7 +144,7 @@ end function
 function FetchThemVast(element as object, depth as integer)
 
     if element.GetName() = "VASTAdTagURI"
-        m.themVast.VASTAdTagURI.push(element.GetText())
+        m.themVast.VASTAdTagURI.push(element.GetText().Trim())
     end if
     if element.GetName() = "Impression"
         m.themVast.Impression.push(element.GetText())
@@ -195,7 +195,7 @@ end function
 function FetchThemNewVast(element as object, depth as integer)
 
     if element.GetName() = "VASTAdTagURI"
-        m.themNewVast.VASTAdTagURI.push(element.GetText())
+        m.themNewVast.VASTAdTagURI.push(element.GetText().Trim())
     end if
     if element.GetName() = "Impression"
         m.themNewVast.Impression.push(element.GetText())
@@ -246,7 +246,7 @@ end function
 function NewOurVast(element as object, depth as integer)
     'vast = {}
     if element.GetName() = "VASTAdTagURI"
-        m.ourVast.VASTAdTagURI = element.GetText()
+        m.ourVast.VASTAdTagURI = element.GetText().Trim()
         PrintDebug(" AdTagURI " + element.GetText())
     end if
     if element.GetName() = "Impression"

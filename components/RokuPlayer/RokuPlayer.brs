@@ -95,7 +95,7 @@ function work()
 
     settingsAddress = "https://vast.ctv.media/player?channel=[CHANNEL_NAME]"
 
-    address = "https://vast.ctv.media/?channel=[CHANNEL_NAME]&width=[WIDTH]&height=[HEIGHT]&uip=[IP_ADDRESS]&appName=[APP_NAME]&appBundle=[APP_BUNDLE_ID]&device_model=[DEVICE_MODEL]&deviceId=[DEVICE_ID]&publisher=[PUBLISHER]"
+    address = "https://vast.ctv.media/?channel=[CHANNEL_NAME]&width=[WIDTH]&height=[HEIGHT]&uip=[IP_ADDRESS]&appname=[APP_NAME]&appBundle=[APP_BUNDLE_ID]&device_model=[DEVICE_MODEL]&deviceId=[DEVICE_ID]&publisher=[PUBLISHER]"
 
     address = address.Replace("[IP_ADDRESS]", m.ip)
     address = address.Replace("[WIDTH]", str(m.displaySize.w))
