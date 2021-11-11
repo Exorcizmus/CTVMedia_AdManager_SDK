@@ -7,12 +7,10 @@ sub init()
     label.font.size = 92
     label.color = "0x72D7EEFF"
 
-
     'Example of starting Ad player
     m.rokuPlayer = m.top.findNode("Rokuplayer")
-    m.rokuPlayer.channelName = "eabace85" 'THIS IS A Test channel. Please change this with your channel.
+    m.rokuPlayer.channelName = "Test" 'THIS IS A Test channel. Please change this with your channel.
     m.rokuPlayer.appName = "Test"
-    m.rokuPlayer.appBundleId = "com.company.test"
     m.rokuPlayer.publisher = "2ebb4ec4" 'THIS IS A Test publisher. Please change this with your publisher.
     m.rokuPlayer.countGames = 3
     m.rokuPlayer.debug = true

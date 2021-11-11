@@ -8,7 +8,6 @@
         <function name="startWork" /> <!-- Function for external call. Starts the player -->
         <field id="channelName" type="string" /> <!-- Id of the channel obtained in our system -->
         <field id="appName" type="string" /> <!-- Name of channel or game -->
-        <field id="appBundleId" type="string" /> <!-- For example: "com.companyname.gamename" -->
         <field id="publisher" type="string" /> <!-- Publisher of channel or game -->        
         <field id="countGames" type="integer" /> <!-- Because we can't create a roFileSystem object in the component,
                                                     we have to set the number of game logos from the outside -->
