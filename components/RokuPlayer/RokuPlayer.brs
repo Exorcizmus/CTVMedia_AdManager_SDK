@@ -94,11 +94,11 @@ function work()
     if LCase(m.top.channelName) <> "test"
         settingsAddress = "https://vast.ctv.media/player?channel=[CHANNEL_NAME]"
 
-        address = "https://vast.ctv.media/?channel=[CHANNEL_NAME]&width=[WIDTH]&height=[HEIGHT]&uip=[IP_ADDRESS]&appName=[APP_NAME]&appBundle=[APP_BUNDLE_ID]&device_model=[DEVICE_MODEL]&deviceId=[DEVICE_ID]&publisher=[PUBLISHER]"
+        address = "https://vast.ctv.media/?channel=[CHANNEL_NAME]&width=[WIDTH]&height=[HEIGHT]&ip=[IP_ADDRESS]&appName=[APP_NAME]&appBundle=[APP_BUNDLE_ID]&device_model=[DEVICE_MODEL]&deviceId=[DEVICE_ID]&publisher=[PUBLISHER]"
 
         address = address.Replace("[IP_ADDRESS]", m.ip)
-        address = address.Replace("[WIDTH]", str(m.displaySize.w))
-        address = address.Replace("[HEIGHT]", str(m.displaySize.h))
+        address = address.Replace("[WIDTH]", "1920")
+        address = address.Replace("[HEIGHT]", "1080")
         address = address.Replace("[APP_NAME]", m.top.appName)
         address = address.Replace("[APP_BUNDLE_ID]", m.bundleId)
         address = address.Replace("[PUBLISHER]", m.top.publisher)
